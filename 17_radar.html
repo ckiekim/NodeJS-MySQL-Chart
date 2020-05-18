@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Chart.js Example</title>
+    <meta charset="utf-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+</head>
+<body>
+    <h3>Radar Chart</h3>
+    <hr>
+    <div style="width:80%;">
+		<canvas id="canvas"></canvas>
+	</div>
+    <script>
+    var ctx = document.getElementById('canvas').getContext('2d');
+    var myBarChart = new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+                label: '홍길동',
+                data: [6, 9, 7, 8, 7, 7],
+                backgroundColor: 'rgba(75, 192, 192, 0.1)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1
+            }, {
+                label: '성춘향',
+                data: [7, 8, 10, 7, 6, 8],
+                backgroundColor: 'rgba(255, 99, 132, 0.1)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scale: {
+                ticks: {
+                    beginAtZero: true,
+                    max: 10
+                }
+            }
+        }
+    });
+    </script>
+</body>
+</html>

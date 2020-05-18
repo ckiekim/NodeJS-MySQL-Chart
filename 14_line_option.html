@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Chart.js Example</title>
+    <meta charset="utf-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+</head>
+<body>
+    <h3>Multi Line Graph with Option</h3>
+    <hr>
+    <div style="width:80%;">
+		<canvas id="canvas"></canvas>
+	</div>
+    <script>
+    var ctx = document.getElementById('canvas').getContext('2d');
+    var myLineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [0, 1, 2, 3, 4],
+            datasets: [{
+                label: 'y = x + 1',
+                fill: false,
+                data: [1, 2, 3, 4, 5],
+                borderColor: 'rgba(255, 99, 132, 1)',   // default rgba(0, 0, 0, 0.1)
+                borderWidth: 3      // default 3
+            }, {
+                label: 'y = x**2 / 2',
+                fill: false,
+                pointRadius: 10,    // default 3
+                pointStyle: 'triangle', // default 'circle'; cross, star, triangle, line
+                data: [0, 0.5, 2, 4.5, 8],
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 2      
+            }, {
+                label: 'y = -2x + 8',
+                fill: false,
+                pointRadius: 0,    
+                data: [8, 6, 4, 2, 0],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderDash: [10, 10],
+                borderWidth: 5
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            },
+            legend: {
+                display: true,
+                labels: {
+                    fontColor: 'rgb(255, 99, 132)'  // default #666
+                }
+            },
+            title: {
+                display: true,          // default false
+                //position: 'left',     // default 'top'
+                fontSize: 24,           // default 12
+                text: '선 그래프'
+            }
+        }
+    });
+    </script>
+</body>
+</html>
