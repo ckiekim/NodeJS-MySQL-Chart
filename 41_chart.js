@@ -6,6 +6,18 @@ module.exports.anscombe = function(dataset) {
         datasets += `{x: ${item.xdata}, y: ${item.ydata}}, `
     }
     console.log(datasets);
+
+    let lis = '';
+    for (let i=1; i<=4; i++) {
+        lis += (ds == i) ? 
+            `<li class="page-item active" aria-current="page">
+                <span class="page-link">
+                ${i}
+                <span class="sr-only">(current)</span>
+                </span>
+            </li>` :
+            `<li class="page-item"><a class="page-link" href="/chart/${i}">${i}</a></li>`;
+    }
     return `
 <!DOCTYPE html>
 <html lang="ko">
@@ -27,8 +39,18 @@ module.exports.anscombe = function(dataset) {
         </div>
         <div class="row">
             <div class="col-2"></div>
-            <div class="col-8">
+            <div class="col-6">
                 <h2>Anscombe's Dataset ${ds}</h2>
+            </div>
+            <div class="col-4">
+                <nav aria-label="dataset">
+                    <ul class="pagination">
+                        ${lis}
+                    </ul>
+                </nav>                
+            </div>
+            <div class="col-2"></div>
+            <div class="col-8">
                 <canvas id="canvas"></canvas>
             </div>
             <div class="col-2"></div>
@@ -40,7 +62,7 @@ module.exports.anscombe = function(dataset) {
         type: 'scatter',
         data: {
             datasets: [{
-                label: 'Dataset I',
+                label: 'Dataset ${ds}',
                 data: [
                     ${datasets}
                 ],

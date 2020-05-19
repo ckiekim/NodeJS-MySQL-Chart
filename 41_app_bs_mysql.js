@@ -21,7 +21,16 @@ app.post('/chart', function(req, res) {
     let dataset = parseInt(req.body.dataset);
     //console.log(dataset);
     dm.getDataset(dataset, function(results) {
-        //console.log(results);
+        console.log(results);
+        let html = chart.anscombe(results);
+        res.send(html);
+    })
+});
+app.get('/chart/:id', function(req, res) {
+    let id = parseInt(req.params.id);
+    //console.log(dataset);
+    dm.getDataset(id, function(results) {
+        console.log(results);
         let html = chart.anscombe(results);
         res.send(html);
     })

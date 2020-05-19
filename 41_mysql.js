@@ -23,7 +23,7 @@ module.exports = {
     },
     getDataset:    function(ds, callback) {
         const conn = this.getConnection();
-        const sql = 'select * from anscombe where dataset = ?';   // DATE_FORMAT(createdDate, '%Y-%m-%d %T')
+        const sql = 'select * from anscombe where dataset = ?';
 
         conn.query(sql, ds, function(err, rows, fields) {
             if (err)
